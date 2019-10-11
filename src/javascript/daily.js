@@ -26,9 +26,20 @@ const functions = {
          }
         
         
-    }
+    },
 
-    
+
+    makeEmailArr: (name) => {
+
+        let first = name[0].toLowerCase();
+        
+         let last = name[1].toLowerCase();
+  
+  
+       
+       return (first + "." + last + "@evolveu.ca");
+  
+  }
     
 };
 
