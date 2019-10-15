@@ -41,14 +41,17 @@ const functions = {
   
   }*/
 
-  
-  makeEmailObject: (name) => {
+
+   makeEmailObj: (name) => {
     // use the map function to create a new array from the "name" object
     //values and return them in lowercase
 
      const newArr = Object.values(name). map((names) => { return names.toLowerCase();})
 
-     return 0;
+       let first = newArr[0];
+       let last = newArr[1];
+
+       return  (first + "." + last + "@evolveu.ca");
   }
   
   
