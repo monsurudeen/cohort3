@@ -14,7 +14,7 @@
 */
 const functions = {
     
-    assertEquality: (p1,p2) => {
+   /* assertEquality: (p1,p2) => {
         if(p1 === p2) {return "true";}
 
          else {
@@ -39,8 +39,22 @@ const functions = {
        
        return (first + "." + last + "@evolveu.ca");
   
+  }*/
+
+  
+  makeEmailObject: (name) => {
+    // use the map function to create a new array from the "name" object
+    //values and return them in lowercase
+
+     const newArr = Object.values(name). map((names) => { return names.toLowerCase();})
+
+     return 0;
   }
-    
+  
+  
+
+
 };
 
+   
 export default functions;
