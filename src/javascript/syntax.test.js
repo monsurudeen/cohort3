@@ -12,6 +12,7 @@ test('Declaring variables', () => {
     expect(functions.isaString("2")).toBe("true");
     expect(functions.isaBoolean(true)).toBe("true");
     expect(functions.isitUndefined(y)).toBe("true");
-    expect(functions.isanArray(arr)).toBe("true");
+
+    expect(functions.isanArray(arr)).toBe(true);
     expect(functions.isanObject(obj)).toBe("true");
 });

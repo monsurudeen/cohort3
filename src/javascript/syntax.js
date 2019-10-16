@@ -33,14 +33,14 @@ const functions = {
     isaNumber: (a) =>{
         if(typeof a === "number"){
 
-            return 0;
+            return "true";
         }
     },
 
     isaString: (b) =>{
         if(typeof b === "string"){
 
-            return 0;
+            return "true";
         }
 
     },
@@ -48,23 +48,20 @@ const functions = {
     isaBoolean: (c) =>{
         if(typeof c === "boolean"){
 
-            return 0;
+            return "true";
         }
      
     },
 
     isanArray: (d) =>{
-        if(Array.isArray(d) === "true"){
-
-            return 0;
-        }
-
+        return(Array.isArray(d));
+                
     },
 
     isanObject: (e) =>{
         if(typeof e === "object"){
 
-            return 0;
+            return "true";
         }
         
     },
@@ -72,7 +69,7 @@ const functions = {
     isitUndefined: (f) =>{
         if(typeof f === "undefined"){
 
-            return 0;
+            return "true";
         }
     
     },
