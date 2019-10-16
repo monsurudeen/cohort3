@@ -30,7 +30,7 @@ lookup key to retrieve value*/
 
 const functions = {
 
-    isaNumber: (a) =>{
+   isaNumber: (a) =>{
         if(typeof a === "number"){
 
             return "true";
@@ -73,6 +73,43 @@ const functions = {
         }
     
     },
+    
+
+    // simple addition test...
+    simpleAdd: (a,b) => {
+        return 0;
+    },
+    
+    
+    // A  simple while test...
+    whileTest: (a) => {
+      let sum = 0;
+      let counter = 0;
+      while(counter <= a){
+          sum+=1;
+          counter++;
+      } 
+      return 0;
+
+    },
+
+
+
+    // Testing an object for keys and values return....
+      objTest: (obj1)  => {
+        return 0;
+      }
+
+
+
+
+
+
+
+
+
+
+
 
 };
 
