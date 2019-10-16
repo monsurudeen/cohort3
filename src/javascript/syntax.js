@@ -77,7 +77,7 @@ const functions = {
 
     // simple addition test...
     simpleAdd: (a,b) => {
-        return 0;
+        return a+b;
     },
     
     
@@ -89,7 +89,7 @@ const functions = {
           sum+=1;
           counter++;
       } 
-      return 0;
+      return sum;
 
     },
 
@@ -97,7 +97,7 @@ const functions = {
 
     // Testing an object for keys and values return....
       objTest: (obj1)  => {
-        return 0;
+        return Object.keys(obj1);
       }
 
 
