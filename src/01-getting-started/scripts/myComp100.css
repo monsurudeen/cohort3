@@ -1,0 +1,215 @@
+
+/*--------------------------------- Calculator ----------------------------*/
+
+#main-section-calc{
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.calculator{
+
+  flex: 0 0 50%;
+}
+
+.screen{
+  width: 100%;
+  font-size: 7rem;
+  padding: 0.5rem;
+  background: rgb(41,41,56);
+  color: white;
+  border: none;
+}
+
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.5s linear;
+}
+
+button{
+  flex: 0 0 25%;
+  border: 1px solid black;
+  padding: 0.25rem 0;
+  transition: all 1s ease;
+}
+button:hover{
+  background-color: blueviolet;
+}
+
+.btn-burlywood{
+  background-color: burlywood;
+  color: white;
+}
+
+btn-grey{
+  background-color: rgb(224,224,224);
+}
+
+.btn,.btn-equal,.btn-clear{
+    font-size: 4rem;
+}
+
+.btn-equal{
+  background-color: green;
+}
+
+.btn-clear{
+  background-color: indianred;
+}
+
+/* ---------------- CANADIAN TAX CALCULATOR -----------------*/
+
+#main-section-tax-calc{
+
+  width: 100%;
+  height: 70vh;
+  margin-top: 100px;
+  text-align: center;
+}
+
+#tax-calc{
+
+  width: 50%;
+  margin: 0 auto;
+  height: 50vh;
+  border: 2px solid blue;
+}
+
+.buttons-calc-clear{
+
+  width: 100%;
+  margin-top: 50px;
+  
+}
+
+#screen-tax{
+
+  margin-top: 40px;
+  border: 1px solid blue;
+}
+
+#message-tax{
+
+  width: 60%;
+  height: 20%;
+  border:1px dashed blue;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+#calc-btn,#clear-tax {
+
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid blue;
+}
+
+
+
+
+/* ---------------- WORKING WITH ARRAYS -----------------*/
+
+#main-section-array{
+
+  width: 100%;
+  height: 70vh;
+  margin-top: 100px;
+  text-align: center;
+}
+
+#arrays{
+
+  width: 50%;
+  margin: 0 auto;
+  height: 50vh;
+  border: 2px solid blue;
+}
+
+.buttons-arr{
+
+  width: 100%;
+  margin-top: 50px;
+  
+}
+
+#screen-arr{
+
+  margin-top: 40px;
+  border: 1px solid blue;
+}
+
+#message-arr{
+
+  width: 60%;
+  height: 20%;
+  border:1px dashed blue;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+#add-btn,#clear-arr,#show-btn,#total-btn {
+
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid blue;
+}
+
+
+
+/* ---------------- WORKING WITH DICTIONARIES -----------------*/
+
+#main-section-dict{
+
+  width: 100%;
+  height: 70vh;
+  margin-top: 100px;
+  text-align: center;
+}
+
+#dictionaries{
+
+  width: 50%;
+  margin: 0 auto;
+  height: 50vh;
+  border: 2px solid blue;
+}
+
+.buttons-lookup{
+
+  width: 100%;
+  margin-top: 50px;
+  
+}
+
+#screen-dict{
+
+  margin-top: 40px;
+  border: 1px solid blue;
+}
+
+#message-dict{
+
+  width: 60%;
+  height: 20%;
+  border:1px dashed blue;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+#lookup-btn{
+
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid blue;
+}
+
+
