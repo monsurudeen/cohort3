@@ -1,20 +1,45 @@
-/*
-  Write a function to create this output:
 
-  ***The two values are not the same:
-        P1 --> a
-        P2 --> b
-
-  ***The two values are not the same:
-        P1 --> 1
-        P2 --> 2
-
-  
-
-*/
 const functions = {
 
-  //----------- DAILY EXERCISES- MORE ARRAY WORK: 2019-10-16------------
+ //----------- DAILY EXERCISES- LOOPSTAFF: 2019-10-21------------ 
+
+ loopStaff: (email) => {
+  
+
+
+  
+  const newEmail = email.map( (num) => {
+     return (functions.makeEmailObj(num)); 
+ 
+   })
+ 
+   
+ 
+ 
+ 
+ return newEmail;
+ }, 
+
+
+ /*------------ Another way to solve the loopstaff problem -----------
+ loopStaff: (email) => {
+      const newArr1 = [];
+
+    
+      
+      email.forEach( (num) => {
+        newArr1.push(functions.makeEmailObj(num)); 
+      })
+
+      
+
+    
+
+    return newArr1;
+ },*/
+
+
+   //----------- DAILY EXERCISES- MORE ARRAY WORK: 2019-10-16------------
 
  // A sample function that uses the "slice()" function on an array...
 
@@ -156,10 +181,10 @@ makeEmailObj: (name) => {
   // use the map function to create a new array from the "name" object
   //values and return them in lowercase
 
-   const newArr = Object.values(name). map((names) => { return names.toLowerCase();})
+   const newArr = Object.values(name). map((names) => { return names;})
 
-     let first = newArr[0];
-     let last = newArr[1];
+     let first = newArr[0].toLowerCase();
+     let last = newArr[1]. toLowerCase();
 
      return  (first + "." + last + "@evolveu.ca");
 },
@@ -176,6 +201,19 @@ makeEmailArr: (name) => {
 
 
 
+/*
+  Write a function to create this output:
+
+  ***The two values are not the same:
+        P1 --> a
+        P2 --> b
+
+  ***The two values are not the same:
+        P1 --> 1
+        P2 --> 2
+
+*/
+
 assertEquality: (p1,p2) => {
         if(p1 === p2) {return "true";}
 
@@ -189,6 +227,7 @@ assertEquality: (p1,p2) => {
     },
 
 
+  
    
 
   
