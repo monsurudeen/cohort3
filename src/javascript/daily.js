@@ -1,6 +1,69 @@
 
 const functions = {
 
+  //------------  DAILY EXERCISES- LOOPSTAFF CALLBACK: FOREACH 2019-10-25 -----------
+
+ loopStaff: (email) => {
+      const newArr1 = [];
+
+    
+      
+      email.forEach( (num) => {
+        newArr1.push(functions.makeEmailObj(num)); 
+      })
+
+      
+
+    
+
+    return newArr1;
+ },
+//----------- DAILY EXERCISES- LOOPSTAFF CALLBACK: MAP 2019-10-25------------- 
+
+loopStaff: (email) => {
+  
+
+
+  
+  const newEmail = email.map( (num) => {
+     return (functions.makeEmailObj(num)); 
+ 
+   })
+ 
+   return newEmail;
+ }, 
+  //----------- DAILY EXERCISES- LOOPSTAFF-IN / LOOPSTAFF-OF: 2019-10-24------------ 
+
+  // using FOR-IN -----------------------
+
+  loopStaffIn: (email) =>  {
+
+    const newArr = [];
+
+    for(const item in email) // loops over "email" array,retrieves the index numbers
+     {
+      let arr = functions.makeEmailObj(email[item]); // retrieve values from the index numbers
+      newArr.push(arr);  // pushes values onto a new array
+    }
+     return newArr;
+  },
+
+  // using FOR-OF ----------------------
+
+  loopStaffOf: (email) =>  {
+
+   const newArr1 = [];
+
+    for(const item of email) // loops over "email" array, retrieves values
+     {
+      let arr = functions.makeEmailObj(item); // extract values into a new array
+      newArr1.push(arr); 
+    }
+     return newArr1;
+  },
+
+
+
  //----------- DAILY EXERCISES- LOOPSTAFF: 2019-10-21------------ 
 
  loopStaff: (email) => {
@@ -13,11 +76,7 @@ const functions = {
  
    })
  
-   
- 
- 
- 
- return newEmail;
+   return newEmail;
  }, 
 
 
