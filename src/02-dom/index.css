@@ -1,0 +1,58 @@
+body {
+
+    padding : 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+#main-div {
+     width: 30%;
+     height: 50vh;
+     text-align: center;
+     border: 2px solid black;
+     margin: 0 auto ;
+     margin-top: 50px;
+     border-radius: 10px;
+     overflow: auto;
+
+}
+
+ol {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 90%;
+}
+
+li {
+    width: 50%;
+    list-style-position: inside;
+    text-align: left;
+    margin: 0 auto;
+}
+
+button {
+    
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+#add {
+
+    border: 2px solid green;
+    
+    
+}  
+
+#delete {
+
+    border: 2px solid red;
+    
+    
+}
+
+#inpt {
+
+    border: 2px solid blue;
+    margin-bottom: 25px;
+}
