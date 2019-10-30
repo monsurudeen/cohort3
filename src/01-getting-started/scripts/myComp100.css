@@ -1,8 +1,50 @@
 
+/* ---------------- A SIMPLE CALCULATOR -----------------*/
+
+#id-main-calcSimp{
+
+  width: 100%;
+  height: 60vh;
+  margin-top: 200px;
+  text-align: center;
+}
+
+#idCalc-cont{
+
+  width: 40%;
+  margin: 0 auto;
+  height: 50%;
+  border: 2px solid blue;
+}
+
+#idCalc{
+
+  width: 80%;
+  margin: 0 auto;
+  height: 80%;
+  margin-top: 30px;
+}
+
+
+
+#idFirst,
+#idSecond,
+#idAns{
+  
+  border: 1px solid blue;
+}
+
+#idSum,#idSub,
+#idMult,#idDiv{
+
+  padding: 10px;
+}
+
+
 /*--------------------------------- Calculator ----------------------------*/
 
 #main-section-calc{
-  min-height: 60vh;
+  max-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +112,7 @@ btn-grey{
   text-align: center;
 }
 
-#tax-calc{
+#idTaxCalc{
 
   width: 50%;
   margin: 0 auto;
@@ -85,13 +127,13 @@ btn-grey{
   
 }
 
-#screen-tax{
+#idScreenTax{
 
   margin-top: 40px;
   border: 1px solid blue;
 }
 
-#message-tax{
+#idMessageTax{
 
   width: 60%;
   height: 20%;
@@ -101,7 +143,7 @@ btn-grey{
   margin-bottom: 30px;
 }
 
-#calc-btn,#clear-tax {
+#idCalcBtn,#idClearTax {
 
   display: inline-block;
   padding: 5px;
@@ -122,7 +164,7 @@ btn-grey{
   text-align: center;
 }
 
-#arrays{
+#idArrays{
 
   width: 50%;
   margin: 0 auto;
@@ -130,20 +172,20 @@ btn-grey{
   border: 2px solid blue;
 }
 
-.buttons-arr{
+.idButtonsArr{
 
   width: 100%;
   margin-top: 50px;
   
 }
 
-#screen-arr{
+#idScreenArr{
 
   margin-top: 40px;
   border: 1px solid blue;
 }
 
-#message-arr{
+#idMessageArr{
 
   width: 60%;
   height: 20%;
@@ -153,7 +195,7 @@ btn-grey{
   margin-bottom: 30px;
 }
 
-#add-btn,#clear-arr,#show-btn,#total-btn {
+#idAddBtn,#idClearArr,#idShowBtn,#idTotalBtn {
 
   display: inline-block;
   padding: 5px;
@@ -173,7 +215,7 @@ btn-grey{
   text-align: center;
 }
 
-#dictionaries{
+#idDictionaries{
 
   width: 50%;
   margin: 0 auto;
@@ -188,13 +230,15 @@ btn-grey{
   
 }
 
-#screen-dict{
+#idScreenDict{
 
   margin-top: 40px;
   border: 1px solid blue;
 }
 
-#message-dict{
+
+
+#idMessageDict{
 
   width: 60%;
   height: 20%;
@@ -204,7 +248,7 @@ btn-grey{
   margin-bottom: 30px;
 }
 
-#lookup-btn{
+#idLookup{
 
   display: inline-block;
   padding: 5px;
