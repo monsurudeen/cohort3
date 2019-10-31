@@ -20,7 +20,27 @@ const data = {
 };
 
 
-//----------- DAILY EXERCISES- LOOPSTAFF:(FOR-EACH VERSION) 2019-10-25------------
+//----------- DAILY EXERCISES- LOOPSTAFF:(Average of balances) 2019-10-29------------
+
+test('more array exercises loopstaff -AVERAGE- ', () => {
+    const staffEmail5 = functions.loopStaffReduceAvg(data.staff);
+
+   console.log(staffEmail5);
+   expect(staffEmail5).toBeCloseTo(546.143);
+});
+
+
+//----------- DAILY EXERCISES- LOOPSTAFF:(Total of balances) 2019-10-29------------
+
+test('more array exercises loopstaff -TOTAL- ', () => {
+    const staffEmail4 = functions.loopStaffReduceTotal(data.staff);
+
+   console.log(staffEmail4);
+   expect(staffEmail4).toEqual(3823);
+});
+
+
+/*----------- DAILY EXERCISES- LOOPSTAFF:(FOR-EACH VERSION) 2019-10-25------------
 
 test('email builder for company loopstaff (for-each version)', () => {
     const staffEmail3 = functions.loopStaff(data.staff);
