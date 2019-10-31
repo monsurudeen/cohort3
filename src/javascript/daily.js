@@ -1,7 +1,7 @@
 
 const functions = {
 
-  // DAILY EXERCISES- MORE ARRAY EXERCISES: REDUCE(AVERAGE OF BALANCES OF BALANCES) 2019-10-29------------- 
+  // DAILY EXERCISES- MORE ARRAY EXERCISES: REDUCE(AVERAGE OF BALANCES) 2019-10-29------------- 
 
   loopStaffReduceAvg: (email) => {
 

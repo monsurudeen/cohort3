@@ -20,7 +20,7 @@ const data = {
 };
 
 
-//----------- DAILY EXERCISES- LOOPSTAFF:(Average of balances) 2019-10-29------------
+//----------- DAILY EXERCISES- LOOPSTAFF:(Average Of Balances) 2019-10-29------------
 
 test('more array exercises loopstaff -AVERAGE- ', () => {
     const staffEmail5 = functions.loopStaffReduceAvg(data.staff);
