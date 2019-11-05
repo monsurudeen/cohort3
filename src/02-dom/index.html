@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel = "stylesheet" type = "text/css" href = "./index.css">
-    
+    <link rel="stylesheet" type="text/css" href="./index.css">
+
 </head>
+
 <body>
-    <div id = "main-div">
-        <h1>Basic DOM</h1>
-        <p>This is a list of stuff</p>
-        <ol id = "list-cont">
-            <li class = "list">Item 1</li>
-            <li class = "list">Item 2</li>
-            <li class = "list">Item 3</li>
+    <section id="idBasicDom">
+        <div id="main-div">
+            <h1>Basic DOM</h1>
+            <p>This is a list of stuff</p>
+            <ol id="list-cont">
+                <li class="list">Item 1</li>
+                <li class="list">Item 2</li>
+                <li class="list">Item 3</li>
 
-        </ol>
-        <input id = "inpt" type ="text" placeholder ="Add an item to list">
-        <button type = "button" id = "add"> Add </button>
-        <button type = "button" id = "delete">Delete</button>
-        <button type = "button" id = "show">Show</button>  
-        
-        <div id = "showDiv">
+            </ol>
+            <input id="inpt" type="text" placeholder="Add an item to list">
+            <button type="button" id="add"> Add </button>
+            <button type="button" id="delete">Delete</button>
+            <button type="button" id="show">Show</button>
 
+            <div id="showDiv">
+
+            </div>
         </div>
-    </div>
+    </section>
 
-     
-    <script type = "module" src = "./scripts/main.js"></script>
-  </body>
-</html> 
+
+    <section id="idCards">
+        <div id="idContDiv">
+            <h1>Working with cards</h1>
+            <div id='idBigDiv' class='panel'>
+                <button type="button" class="btn  addCard">add-card</button>
+                <div class="childDiv" count='0'> card 0 <br>
+                    <button type="button" class='btn addBefore'>add-before</button>
+                    <button type="button" class='btn addAfter'>add-after</button><br>
+                    <button type="button" class='btn delete'>delete</button>
+                </div>;
+
+            </div>
+            <div id='idRightPanel' class='panel'>
+
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="./scripts/main.js"></script>
+</body>
+
+</html>
