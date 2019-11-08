@@ -20,6 +20,24 @@ const data = {
 };
 
 
+//----------- DAILY EXERCISES- LOOPSTAFF:More Array Exercises (Really) - November 6, 2019------------
+
+test('More Array Exercises (Really) - FILTER', () => {
+    const staffEmail6 = functions.loopStaffFilter(data.staff);
+
+   
+   expect(staffEmail6).toEqual([{ fname: "Liam", lname: "Henry", balance: 1000 },
+                               {fname: "Emma", lname: "Jones", balance: 1330 }]);
+
+});
+
+
+
+
+
+
+
+
 //----------- DAILY EXERCISES- LOOPSTAFF:(Average Of Balances) 2019-10-29------------
 
 test('more array exercises loopstaff -AVERAGE- ', () => {

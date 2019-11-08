@@ -1,6 +1,19 @@
 
 const functions = {
 
+  // DAILY EXERCISES-------More Array Exercises (Really) - November 6, 2019-------------
+
+
+  loopStaffFilter: (email) => {
+
+    const newEmail = email.filter((num) => {
+            return num['balance'] >= 1000; 
+    })     
+
+      return (newEmail);
+  },
+
+
   // DAILY EXERCISES- MORE ARRAY EXERCISES: REDUCE(AVERAGE OF BALANCES) 2019-10-29------------- 
 
   loopStaffReduceAvg: (email) => {
