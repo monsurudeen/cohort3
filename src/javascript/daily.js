@@ -1,6 +1,35 @@
 
 const functions = {
 
+
+  // DAILY EXERCISES-------Callback Exercise (Part 1) - November 8, 2019-------------
+
+
+  peopleFilter: (peopleArr, callbackFn, filterByProperty, propertyArr) => {
+
+    const filteredArr = peopleArr.filter((obj) => {
+
+       return ((obj[filterByProperty]=== propertyArr[0]) || (obj[filterByProperty]=== propertyArr[1]))
+             
+    })     
+       
+    return callbackFn(filteredArr);
+  },
+
+  // Defining the callback function.....
+
+  callbackFn1: (filteredArr1) => {
+
+    const newArr = filteredArr1.map( (obj1) => {
+
+         let temp = `${obj1['fname']} ${obj1['lname']}`;
+         return temp;
+             
+    })     
+
+    return newArr;
+  },
+ 
   // DAILY EXERCISES-------More Array Exercises (Really) - November 6, 2019-------------
 
 
@@ -12,7 +41,6 @@ const functions = {
 
       return (newEmail);
   },
-
 
   // DAILY EXERCISES- MORE ARRAY EXERCISES: REDUCE(AVERAGE OF BALANCES) 2019-10-29------------- 
 
@@ -53,19 +81,11 @@ const functions = {
       newArr1.push(functions.makeEmailObj(num));
     })
 
-
-
-
-
     return newArr1;
   },
   //----------- DAILY EXERCISES- LOOPSTAFF CALLBACK: MAP 2019-10-25------------- 
 
   loopStaff: (email) => {
-
-
-
-
     const newEmail = email.map((num) => {
       return (functions.makeEmailObj(num));
 
@@ -73,6 +93,7 @@ const functions = {
 
     return newEmail;
   },
+
   //----------- DAILY EXERCISES- LOOPSTAFF-IN / LOOPSTAFF-OF: 2019-10-24------------ 
 
   // using FOR-IN -----------------------
@@ -103,14 +124,9 @@ const functions = {
     return newArr1;
   },
 
-
-
   //----------- DAILY EXERCISES- LOOPSTAFF: 2019-10-21------------ 
 
   loopStaff: (email) => {
-
-
-
 
     const newEmail = email.map((num) => {
       return (functions.makeEmailObj(num));
@@ -124,17 +140,11 @@ const functions = {
   /*------------ Another way to solve the loopstaff problem -----------
   loopStaff: (email) => {
        const newArr1 = [];
- 
-     
-       
+           
        email.forEach( (num) => {
          newArr1.push(functions.makeEmailObj(num)); 
-       })
- 
-       
- 
-     
- 
+       })  
+
      return newArr1;
   },*/
 
@@ -142,7 +152,6 @@ const functions = {
   //----------- DAILY EXERCISES- MORE ARRAY WORK: 2019-10-16------------
 
   // A sample function that uses the "slice()" function on an array...
-
 
   sliceFn: (arr) => {  // arr is an array...
 
