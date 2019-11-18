@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+    <section id="mainSection">
+        <div id="idContDiv">
+            <h1 class= "header">PEOPLE'S BANK</h1>
+            <div id='idLeftPanel' class='panel'>
+                <button type="button" id= "idCreateAcct" class= "clsCreateAcct">CREATE ACCOUNT</button>
+               <!-- <div class="childDiv" count='0'> Account 0 <br>
+                  <div id="btnGrp">
+                    <button type="button" class= 'btns  deposit'>Deposit</button>
+                    <button type="button" class= 'btns  withdraw'>Withdraw</button>
+                    <button type="button" class= 'btns delete '>delete</button>
+                  </div>
+                </div> -->
+
+            </div>
+            <div id='idRightPanel' class='panel'>
+                <div class="clsAccountsDiv clsRightPanelChild">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope= "col">Account Name</th>
+                                <th scope= "col">Balance</th>
+                                <th scope= "col"></th>
+                                <th scope= "col"></th>
+                                <th scope= "col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id= "idTbody" class= "tBody"></tbody>
+                    </table>      
+                </div>             
+                <div  id= 'idMessageArea' class="clsMessageArea  clsRightPanelChild">                                  
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="./scripts/index.js"></script>
+</body>
+</html>

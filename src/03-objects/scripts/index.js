@@ -1,0 +1,164 @@
+
+import * as oo from "./accounts.js";
+
+const acctcont = new oo.AccountController();
+const messageArea = idMessageArea;
+const containerDiv = idContDiv;
+containerDiv.addEventListener("click", (event) => {
+
+
+    switch (event.target.className) {
+        case "clsCreateAcct": {
+            let targetParent = event.target.parentElement; // navigating to the Left Panel from the 'create acct button,
+            let childrenArr = Array.from(targetParent.children);
+            let childrenIds = childrenArr.map((child) => {  // gets the ids' of Left Panel children..
+                return (child.id);
+            });
+            if (!(childrenIds.includes('idAcctFormDiv'))) { // only one 'create acct form' is on at a time
+                const leftPanel = idLeftPanel;
+                leftPanel.appendChild(acctcont.createAcctForm())
+            }
+            break;
+        }
+
+        case "clsAddAcctInpt": {
+
+            const acctName = idAcctNameInpt; // from the create acct form
+            const acctBal = idBalInpt;       // from the create acct form 
+            if ((acctName.value !== "") && (acctBal.value !== "") && (parseFloat(acctBal.value) > 0)) {
+
+                if (!(acctcont.accountListLoop().includes(acctName.value))) {
+                    const acctInstance = acctcont.createAccount(acctName.value, acctBal.value) // creates an instance of acct with input values
+                    const tBodyAcctContent = acctcont.createAcctContent(acctInstance); // fills <tr> with acct information
+                    const tableBody = idTbody;
+                    tableBody.appendChild(tBodyAcctContent); // Appends <tr> to table body..
+
+                    acctcont.getAcctList();
+                    messageArea.innerHTML = ` <p>The total of all balance(s) is $${acctcont.totalAccounts()}</span></P>
+                                              <p>The highest valued account is ${acctcont.highestAccount().accName} with $${acctcont.highestAccount().bal}</p>
+                                              <p> The lowest valued account is ${acctcont.lowestAccount().accName} with $${acctcont.lowestAccount().bal}<p/>`
+                }
+            }else {
+                messageArea.innerHTML = `<p> Please enter a valid amount </p>` 
+            }
+
+            acctName.value = "";
+            acctBal.value = "";
+
+            break;
+        }
+
+        case "acctBtns deposit": {
+            // the next line selects the <td> containing the initial balance navigating from the deposit btn.
+            let balanceTableData = event.target.parentElement.previousElementSibling;
+            let targetChild = Array.from(containerDiv.children).filter((child) => { // getting the left panel
+                return (child.id === 'idLeftPanel')
+            })
+
+            //The next line gets the ids of all the children elements currently in the left panel
+            let childrenIds = Array.from(targetChild[0].children).map((item) => {
+                return item.id;
+            })
+            if (!(childrenIds.includes('idDepositFormDiv'))) {  // only one deposit form is on at a time
+                let depositHeader = event.target.parentElement.previousElementSibling.previousElementSibling.textContent;
+                const leftPanel = idLeftPanel;
+                leftPanel.appendChild(acctcont.createDepositForm(depositHeader)); // brings up the deposit form...
+            }
+
+            const deposit = idAddDeposit; // selects deposit btn in form ....
+            const depositInpt = idDepositInpt;
+            deposit.addEventListener("click", (e) => {
+                let parent = e.target.parentElement;
+                let namesList = acctcont.accountListLoop(); // returns acct names in acct list             
+                let childInForm = acctcont.getChildInForm(parent);  // Returns the first element child in the withdrawal form
+
+                // The next line gets the index no of the selected acct name in the accts names list
+                let indexInNameList = acctcont.getIndexInNamelist(namesList, childInForm.textContent);
+                if (!(parseFloat(depositInpt.value) < 0)) {
+                    //The next line deposits into the selected acct in the acct List using the index we got from the previous line    
+                    let temp = acctcont.accountList[indexInNameList].deposit(parseFloat(depositInpt.value));
+                    balanceTableData.textContent = temp;                
+
+                acctcont.getAcctList();
+                messageArea.innerHTML = ` <p>The total of all balance(s) is $${acctcont.totalAccounts()}</span></P>
+                                              <p>The highest valued account is ${acctcont.highestAccount().accName} with $${acctcont.highestAccount().bal}</p>
+                                              <p> The lowest valued account is ${acctcont.lowestAccount().accName} with $${acctcont.lowestAccount().bal}<p/>`
+
+                acctcont.deleteElement(parent);
+
+                }else {
+                    messageArea.innerHTML = `<p> Please enter a valid amount </p>`
+                }
+            })
+            break;
+        }
+
+        case "acctBtns withdraw": {
+            // the next line selects the <td> containing the initial balance navigating from the withwithdraw btn..
+            let balanceTableData = event.target.parentElement.previousElementSibling.previousElementSibling;
+            let targetChild = Array.from(containerDiv.children).filter((child) => {      // getting the left panel
+                return (child.id === 'idLeftPanel')
+            })
+            let childrenIds = Array.from(targetChild[0].children).map((item) => {  //getting the ids of the left panel children..
+                return item.id;
+            })
+            if (!(childrenIds.includes('idWithdrwFormDiv'))) { // only one withdraw form is on at a time...
+                let withdrawHeader = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent
+                const leftPanel = idLeftPanel;
+                leftPanel.appendChild(acctcont.createWithdrawalForm(withdrawHeader));
+            }
+
+            const withdraw = idWithdraw; // selects withdraw btn in form ....
+            const withDrawInpt = idWithdrwInpt;
+            withdraw.addEventListener("click", (e) => {
+                let parent = e.target.parentElement;
+                let namesList = acctcont.accountListLoop(); // returns acct names in acct list..        
+                let childInForm = acctcont.getChildInForm(parent); // Returns the first element child in the withdrawal form..
+
+                // The next line gets the index no of the selected acct name in the accts names list..
+                let indexInNameList = acctcont.getIndexInNamelist(namesList, childInForm.textContent);                
+                if ((parseFloat(withDrawInpt.value) > 0) && (parseFloat(withDrawInpt.value) <= parseFloat(acctcont.accountList[indexInNameList].bal))) {
+                   
+                    //The next line withdraws from the selected acct in the acct List using the index we got from the previous line    
+                    let temp = acctcont.accountList[indexInNameList].withdraw(parseFloat(withDrawInpt.value));
+                    balanceTableData.textContent = temp;
+
+                    acctcont.getAcctList();
+                    messageArea.innerHTML = ` <p>The total of all balance(s) is $${acctcont.totalAccounts()}</span></P>
+                                              <p>The highest valued account is ${acctcont.highestAccount().accName} with $${acctcont.highestAccount().bal}</p>
+                                              <p> The lowest valued account is ${acctcont.lowestAccount().accName} with $${acctcont.lowestAccount().bal}<p/>`
+
+                }else {
+                    messageArea.innerHTML = `<p> Please enter an amount that is greater than $0 but less than or equal to $${acctcont.accountList[indexInNameList].bal}</p>
+                                             <p>Your current balance is $${acctcont.accountList[indexInNameList].bal}</p>`;
+                }
+
+                acctcont.deleteElement(parent);
+            })
+            break;
+        }
+
+        case "acctBtns delete": {
+            // The next line gets the acct name <td> navigating from the delete <td>
+            let targetTd = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
+
+            if (confirm(`Are you sure you want to delete account ${targetTd.textContent}`)) { // pops up a confirm delete message box
+                // the next line removes the <tr> line with the selected acct name(targetTd)
+                acctcont.deleteElement(event.target.parentElement.parentElement)
+                acctcont.removeAccount(targetTd.textContent); // Removes the corresponding accName and bal from the account List
+            }
+            messageArea.innerHTML = ` <p>The total of all balance(s) is <span style= 'font-weight:bold color:blue'>$${acctcont.totalAccounts()}</span></P>
+                                      <p>The highest valued account is ${acctcont.highestAccount().accName} with $${acctcont.highestAccount().bal}</p>
+                                      <p> The lowest valued account is ${acctcont.lowestAccount().accName} with $${acctcont.lowestAccount().bal}<p/>`
+
+            break;
+        }
+
+        case "clsDeleteForm": {
+            acctcont.deleteElement(event.target.parentElement)
+            break;
+        }
+        default:
+            console.log("Not Programmed for :", event.target);
+    }
+});

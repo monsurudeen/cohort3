@@ -1,0 +1,269 @@
+body {
+
+    padding : 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.header {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#mainSection {
+    height: 100vh;
+    background-color: rgb(247, 235, 247);
+}
+
+#idContDiv {
+    min-height: 95vh;
+    width:92%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.panel {
+    
+    height: 80vh;
+    border: 4px solid darkblue ;
+    border-radius: 20px;
+    background-color: floralwhite;
+    padding: 2px;
+}
+
+#idLeftPanel {
+    float: left;
+    min-width: 33%;    
+}
+
+#idRightPanel {
+    float: right;
+    min-width: 65%;
+    overflow: auto;
+    padding-top: 1px;
+}
+
+.childDiv {    
+    width: 90%;    
+    border-radius: 20px;
+    margin: 5px auto;
+    background-color: rgb(247, 235, 247);
+    text-align: center;
+} 
+
+.clsRightPanelChild {
+    width: 98%;
+    padding: 5px 7px;
+    margin: 5px auto;
+    border-radius: 20px;
+    background-color: rgb(247, 235, 247);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+table {
+    width: 98%;
+    margin:0px auto;
+    box-sizing: border-box;
+}
+
+th,td {
+   padding: 7px 5px;
+   text-align: left;
+   border-bottom: 1px solid white;
+}
+
+.clsAccountsDiv{
+    height: 68%;
+    overflow: auto;
+    margin-bottom: 0;
+}
+
+.clsMessageArea {
+    
+    height: 31%; 
+    padding-top: 10px 5px; 
+}
+
+.acctBtns {
+    border-radius: 5px;
+    outline: none;
+    box-shadow:0 0 3px black;
+    padding: 1px 2px;
+    margin-left: 7px;
+    font-size: .8rem;
+}
+
+.acctBtns:hover,.acctBtns:active {
+    background-color: floralwhite;
+    box-shadow:0 0 1px black;
+}
+
+.clsCreateAcct {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    border: 3px solid green;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0 4px 7px black;
+}
+.clsCreateAcct:hover {
+    background-color: floralwhite;
+}
+.clsCreateAcct:active {
+    box-shadow: 0 2px 7px black;
+}
+
+/*#btnGrp {
+    max-width: 80%;
+    margin: 15px auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.btns {
+    padding: 2px 10px;
+    margin-left: 7px;
+    font-size: .8rem;
+}*/
+
+.deposit {
+    border: 2px solid green;
+}
+
+.withdraw {
+    border: 2px solid darkblue;
+}
+
+.delete {
+    border: 2px solid crimson;
+}
+
+.clsAcctFormDiv {
+text-align: center;   
+width: 80%;
+height: 25%;
+padding-top: 10px;
+margin: 0 auto;
+margin-top: 20px;
+border-radius: 20px;
+background-color: rgb(247, 235, 247);
+box-shadow: 0 3px 7px black;
+}
+
+.clsAcctInpt {
+ width: 80%;
+ border: 2px solid green;
+ box-shadow: 0 3px 7px black;
+ background-color:rgb(231, 235, 241);
+}
+.clsAcctInpt:hover,.clsAcctInpt:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black;
+}
+
+.clsAddAcctInpt {
+    border: 2px solid green;
+    box-shadow: 0 3px 7px black;
+    border-radius: 10px;
+    outline: none;
+}
+.clsAddAcctInpt:hover,.clsAddAcctInpt:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black; 
+}
+
+.clsDepositFormDiv {
+    text-align: center;   
+    width: 80%;
+    height: 20%;
+    padding-top: 10px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: rgb(247, 235, 247);
+    box-shadow: 0 3px 7px black;
+}
+
+.clsTitle {
+    font-size: 0.9rem;
+    text-align: center;
+    width: 80%;
+    padding: 1px 0;
+    border: 2px solid green;
+    box-shadow: 0 3px 7px black;
+    background-color:rgb(231, 235, 241);
+    margin: 0 auto;
+    margin-bottom: 13px;
+}
+
+.clsDepositInpt {
+    width: 80%;
+    border: 2px solid green;
+    box-shadow: 0 3px 7px black;
+    background-color:rgb(231, 235, 241);
+    
+}
+.clsDepositInpt:hover,.clsDepositInpt:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black;
+}
+
+.clsAddDeposit {
+    border: 2px solid green;
+    box-shadow: 0 3px 7px black;
+    border-radius: 10px;
+    outline: none;
+}
+.clsAddDeposit:hover,.clsAddDeposit:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black; 
+}
+
+
+.clsWithdrwFormDiv {
+    text-align: center;   
+    width: 80%;
+    height: 20%;
+    padding-top: 10px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: rgb(247, 235, 247);
+    box-shadow: 0 3px 7px black;
+}
+
+.clsWithdrwInpt {
+    width: 80%;
+    border: 2px solid green;
+    box-shadow: 0 3px 7px black;
+    background-color:rgb(231, 235, 241);
+}
+.clsWithdrwInpt:hover,.clsWithdrwInpt:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black;
+}
+
+.clsWithdraw {
+    border: 2px solid green;
+    box-shadow: 0 3px 7px black;
+    border-radius: 10px;
+    outline: none;
+}
+.clsWithdraw:hover,.clsWithdraw:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black; 
+}
+
+.clsDeleteForm {
+    border: 2px solid green;
+    box-shadow: 0 3px 7px black;
+    border-radius: 10px;
+    outline: none;
+    margin-left: 7px;
+}
+.clsDeleteForm:hover,.clsDeleteForm:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black; 
+}
