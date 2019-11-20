@@ -1,7 +1,7 @@
 
 import * as oo from "./accounts.js";
 
-const acctcont = new oo.AccountController();
+const acctcont = new oo.AccountController();  // a new instance of the AccountController class.
 const messageArea = idMessageArea;
 const containerDiv = idContDiv;
 containerDiv.addEventListener("click", (event) => {
@@ -22,25 +22,39 @@ containerDiv.addEventListener("click", (event) => {
         }
 
         case "clsAddAcctInpt": {
-
+            let parent = event.target.parentElement;
             const acctName = idAcctNameInpt; // from the create acct form
             const acctBal = idBalInpt;       // from the create acct form 
-            if ((acctName.value !== "") && (acctBal.value !== "") && (parseFloat(acctBal.value) > 0)) {
 
-                if (!(acctcont.accountListLoop().includes(acctName.value))) {
-                    const acctInstance = acctcont.createAccount(acctName.value, acctBal.value) // creates an instance of acct with input values
-                    const tBodyAcctContent = acctcont.createAcctContent(acctInstance); // fills <tr> with acct information
-                    const tableBody = idTbody;
-                    tableBody.appendChild(tBodyAcctContent); // Appends <tr> to table body..
+            if (acctName.value !== "") {
+                if ((acctBal.value !== "") && (parseFloat(acctBal.value) > 0)) {
+                    //The next if condition ensures each account name is unique
+                    if (!(acctcont.accountListLoop().includes(acctName.value))) {
+                        const acctInstance = acctcont.createAccount(acctName.value, acctBal.value) // creates an instance of acct with input values
+                        const tBodyAcctContent = acctcont.createAcctContent(acctInstance); // fills <tr> with acct information
+                        const tableBody = idTbody;
+                        tableBody.appendChild(tBodyAcctContent); // Appends <tr> to table body..
 
-                    acctcont.getAcctList();
-                    messageArea.innerHTML = ` <p>The total of all balance(s) is $${acctcont.totalAccounts()}</span></P>
-                                              <p>The highest valued account is ${acctcont.highestAccount().accName} with $${acctcont.highestAccount().bal}</p>
-                                              <p> The lowest valued account is ${acctcont.lowestAccount().accName} with $${acctcont.lowestAccount().bal}<p/>`
+                        acctcont.getAcctList();
+                        messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                        <p>The <b>total</b> of all balance(s) is <b>$${acctcont.totalAccounts()}</b></P>
+                        <p>The <b>highest</b> valued account is <b>${acctcont.highestAccount().accName}</b> with <b>$${acctcont.highestAccount().bal}</b></p>
+                        <p> The <b>lowest</b> valued account is <b>${acctcont.lowestAccount().accName}</b> with <b>$${acctcont.lowestAccount().bal}</b><p/>`
+
+                        acctcont.deleteElement(parent);
+
+                    } else {
+                            messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                                                     <p><b> Account name already exists </b></p>`;
+                    }
+                } else {
+                        messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                                                 <p><b> Please enter a valid amount </b></p>`;
                 }
-            }else {
-                messageArea.innerHTML = `<p> Please enter a valid amount </p>` 
-            }
+            } else {
+                    messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                                             <p><b> Please enter a name for account </b></p>`;
+            }     
 
             acctName.value = "";
             acctBal.value = "";
@@ -54,7 +68,6 @@ containerDiv.addEventListener("click", (event) => {
             let targetChild = Array.from(containerDiv.children).filter((child) => { // getting the left panel
                 return (child.id === 'idLeftPanel')
             })
-
             //The next line gets the ids of all the children elements currently in the left panel
             let childrenIds = Array.from(targetChild[0].children).map((item) => {
                 return item.id;
@@ -74,20 +87,22 @@ containerDiv.addEventListener("click", (event) => {
 
                 // The next line gets the index no of the selected acct name in the accts names list
                 let indexInNameList = acctcont.getIndexInNamelist(namesList, childInForm.textContent);
-                if (!(parseFloat(depositInpt.value) < 0)) {
+                if ((parseFloat(depositInpt.value) > 0) && (depositInpt.value !== "")) {
                     //The next line deposits into the selected acct in the acct List using the index we got from the previous line    
                     let temp = acctcont.accountList[indexInNameList].deposit(parseFloat(depositInpt.value));
-                    balanceTableData.textContent = temp;                
+                    balanceTableData.textContent = temp;
 
-                acctcont.getAcctList();
-                messageArea.innerHTML = ` <p>The total of all balance(s) is $${acctcont.totalAccounts()}</span></P>
-                                              <p>The highest valued account is ${acctcont.highestAccount().accName} with $${acctcont.highestAccount().bal}</p>
-                                              <p> The lowest valued account is ${acctcont.lowestAccount().accName} with $${acctcont.lowestAccount().bal}<p/>`
+                    acctcont.getAcctList();
+                    messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                     <p>The <b>total</b> of all balance(s) is <b>$${acctcont.totalAccounts()}</b></P>
+                     <p>The <b>highest</b> valued account is <b>${acctcont.highestAccount().accName}</b> with <b>$${acctcont.highestAccount().bal}</b></p>
+                     <p> The <b>lowest</b> valued account is <b>${acctcont.lowestAccount().accName}</b> with <b>$${acctcont.lowestAccount().bal}</b><p/>`
 
-                acctcont.deleteElement(parent);
+                    acctcont.deleteElement(parent);
 
-                }else {
-                    messageArea.innerHTML = `<p> Please enter a valid amount </p>`
+                } else {
+                    messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                                             <p><b> Please enter a valid amount </b></p>`
                 }
             })
             break;
@@ -116,26 +131,40 @@ containerDiv.addEventListener("click", (event) => {
                 let childInForm = acctcont.getChildInForm(parent); // Returns the first element child in the withdrawal form..
 
                 // The next line gets the index no of the selected acct name in the accts names list..
-                let indexInNameList = acctcont.getIndexInNamelist(namesList, childInForm.textContent);                
-                if ((parseFloat(withDrawInpt.value) > 0) && (parseFloat(withDrawInpt.value) <= parseFloat(acctcont.accountList[indexInNameList].bal))) {
-                   
-                    //The next line withdraws from the selected acct in the acct List using the index we got from the previous line    
-                    let temp = acctcont.accountList[indexInNameList].withdraw(parseFloat(withDrawInpt.value));
-                    balanceTableData.textContent = temp;
+                let indexInNameList = acctcont.getIndexInNamelist(namesList, childInForm.textContent);
+                if ((withDrawInpt.value !== "") && (parseFloat(withDrawInpt.value) > 0)) {
+                    if ((parseFloat(withDrawInpt.value) <= parseFloat(acctcont.accountList[indexInNameList].bal))) {
 
-                    acctcont.getAcctList();
-                    messageArea.innerHTML = ` <p>The total of all balance(s) is $${acctcont.totalAccounts()}</span></P>
-                                              <p>The highest valued account is ${acctcont.highestAccount().accName} with $${acctcont.highestAccount().bal}</p>
-                                              <p> The lowest valued account is ${acctcont.lowestAccount().accName} with $${acctcont.lowestAccount().bal}<p/>`
+                        //The next line withdraws from the selected acct in the acct List using the index we got from the previous line    
+                        let temp = acctcont.accountList[indexInNameList].withdraw(parseFloat(withDrawInpt.value));
+                        balanceTableData.textContent = temp;
 
-                }else {
-                    messageArea.innerHTML = `<p> Please enter an amount that is greater than $0 but less than or equal to $${acctcont.accountList[indexInNameList].bal}</p>
-                                             <p>Your current balance is $${acctcont.accountList[indexInNameList].bal}</p>`;
-                }
+                        acctcont.getAcctList();
+                        messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                         <p>The <b>total</b> of all balance(s) is <b>$${acctcont.totalAccounts()}</b></P>
+                        <p>The <b>highest</b> valued account is <b>${acctcont.highestAccount().accName}</b> with <b>$${acctcont.highestAccount().bal}</b></p>
+                        <p> The <b>lowest</b> valued account is <b>${acctcont.lowestAccount().accName}</b> with <b>$${acctcont.lowestAccount().bal}</b><p/>`
 
-                acctcont.deleteElement(parent);
+                        acctcont.deleteElement(parent);
+
+                    } else {
+                        messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                        <p> You can not withdraw more than <b>$${acctcont.accountList[indexInNameList].bal}</b></p>
+                        <p>Your current balance is <b>$${acctcont.accountList[indexInNameList].bal}</b></p>`;
+                    }
+                } else {
+                    messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+                                             <p><b> Please enter a valid amount </b></p>`
+                }                
             })
             break;
+        }
+
+        case "clsClearMsg": {
+            // Clears the message area...
+            let parent = event.target.parentElement;
+            parent.innerHTML = `<button class='clsClearMsg'>clear</button>`
+            break; 
         }
 
         case "acctBtns delete": {
@@ -147,9 +176,10 @@ containerDiv.addEventListener("click", (event) => {
                 acctcont.deleteElement(event.target.parentElement.parentElement)
                 acctcont.removeAccount(targetTd.textContent); // Removes the corresponding accName and bal from the account List
             }
-            messageArea.innerHTML = ` <p>The total of all balance(s) is <span style= 'font-weight:bold color:blue'>$${acctcont.totalAccounts()}</span></P>
-                                      <p>The highest valued account is ${acctcont.highestAccount().accName} with $${acctcont.highestAccount().bal}</p>
-                                      <p> The lowest valued account is ${acctcont.lowestAccount().accName} with $${acctcont.lowestAccount().bal}<p/>`
+            messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
+               <p>The <b>total</b> of all balance(s) is <b>$${acctcont.totalAccounts()}</b></P>
+               <p>The <b>highest</b> valued account is <b>${acctcont.highestAccount().accName}</b> with <b>$${acctcont.highestAccount().bal}</b></p>
+               <p> The <b>lowest</b> valued account is <b>${acctcont.lowestAccount().accName}</b> with <b>$${acctcont.lowestAccount().bal}</b><p/>`
 
             break;
         }

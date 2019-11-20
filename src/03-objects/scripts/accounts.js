@@ -223,7 +223,7 @@ class AccountController {
   }
 
   removeAccount(accName) {
-    this.accountList = this.accountList.filter(account => {
+    this.accountList = this.accountList.filter((account) => {
       return account.accName !== accName
     });
   }
