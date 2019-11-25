@@ -56,6 +56,15 @@ const people1 = [
     {fname:"Brent", lname:"Riddle", province:"MN", age:79},
 ];
 
+// DAILY EXERCISES-------Callback Exercise (Part 2) - November 21, 2019-------------
+test.only("Callback Exercise (Part 2) - November 21, 2019",() => {
+    // Testing the callback function...
+    const peopleRecords2 = functions.callbackFn2(people1);
+    expect(peopleRecords2).toEqual({ageAverage: 52, numOfPeople: 4, totalAge: 208});
+    expect(peopleRecords2["numOfPeople"]).toBe(4);
+
+})
+
 
 
 test.only("Callback Exercise (Part 1) - November 8, 2019",() =>{

@@ -1,6 +1,41 @@
 
 const functions = {
 
+ // DAILY EXERCISES-------Callback Exercise (Part 2) - November 21, 2019-------------
+
+
+ peopleFilter1: (peopleArr, callbackFn, filterByProperty, propertyArr) => {
+
+  const filteredArr1 = peopleArr.filter((obj) => {
+
+     return ((obj[filterByProperty]=== propertyArr[0]) || (obj[filterByProperty]=== propertyArr[1]))
+           
+  })     
+     
+  return callbackFn(filteredArr1);
+},
+
+// Defining the callback function.....
+
+callbackFn2: (filteredArr1) => {
+     const peopleTotal = parseFloat(filteredArr1.length);
+
+     const ageTotal = parseFloat(filteredArr1.reduce( (acc, entry) => {
+         return acc + entry['age'];
+     }, 0));
+
+     const averageAge = parseFloat(ageTotal / peopleTotal);
+
+     const newObject = {
+      ageAverage: averageAge,
+      numOfPeople: peopleTotal,
+      totalAge: ageTotal        
+     }
+
+     return newObject;      
+  },
+
+
 
   // DAILY EXERCISES-------Callback Exercise (Part 1) - November 8, 2019-------------
 
