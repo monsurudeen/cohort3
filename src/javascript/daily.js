@@ -1,9 +1,16 @@
 
 const functions = {
 
- // DAILY EXERCISES-------Callback Exercise (Part 2) - November 21, 2019-------------
+  // DAILY EXERCISES-------DESTRUCTURING ARRAYS AND OBJECTS - November 26, 2019-------------
 
+  // ARRAY EXAMPLE..
+  destruct1: (arr1) => {
+    //const arr1 = [1,2,3,4,5,6,7];
+  let [num1,num2, ...num3] = arr1; // using the rest parameterwith destructuring 
+   return num2; //[2] 
+  },
 
+ 
  peopleFilter1: (peopleArr, callbackFn, filterByProperty, propertyArr) => {
 
   const filteredArr1 = peopleArr.filter((obj) => {

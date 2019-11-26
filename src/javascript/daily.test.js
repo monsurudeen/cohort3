@@ -56,6 +56,32 @@ const people1 = [
     {fname:"Brent", lname:"Riddle", province:"MN", age:79},
 ];
 
+
+// DAILY EXERCISES-------DESTRUCTURING ARRAYS AND OBJECTS - November 26, 2019-------------
+
+test.only("DESTRUCTURING ARRAYS AND OBJECTS - November 26, 2019",() => {
+
+// destructuring an array
+    let arr2 = functions.destruct1([1,2,3,4,5,6,7])
+    expect(arr2).toEqual(2);
+
+// destructuring with object...
+   const destruct2 ={           
+          firstName : 'dele',
+          lastName : 'kasim',
+          age : 20
+       }          
+     let {firstName,lastName,age} = destruct2;         
+    
+     expect(firstName).toBe('dele');
+     expect(lastName).toBe('kasim');
+     expect(age).toBe(20);
+
+     age = 30;
+     expect(age).toBe(30);
+})
+
+
 // DAILY EXERCISES-------Callback Exercise (Part 2) - November 21, 2019-------------
 test.only("Callback Exercise (Part 2) - November 21, 2019",() => {
     // Testing the callback function...
