@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,19 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./index.css">
 </head>
+
 <body>
     <section id="mainSection">
         <div id="idContDiv">
-            <h1 class= "header">PEOPLE'S BANK</h1>
+            <h1 class="header">PEOPLE'S BANK</h1>
             <div id='idLeftPanel' class='panel'>
-                <button type="button" id= "idCreateAcct" class= "clsCreateAcct">CREATE ACCOUNT</button>
-               <!-- <div class="childDiv" count='0'> Account 0 <br>
+                <button type="button" id="idCreateAcctBtn" class="clsCreateAcctBtn">CREATE ACCOUNT</button>
+                <!-- <div class="childDiv" count='0'> Account 0 <br>
                   <div id="btnGrp">
                     <button type="button" class= 'btns  deposit'>Deposit</button>
                     <button type="button" class= 'btns  withdraw'>Withdraw</button>
                     <button type="button" class= 'btns delete '>delete</button>
-                  </div>
+                  </div><button type="button" id="idCreateAcct" class="clsCreateAcct">CREATE ACCOUNT</button>
                 </div> -->
 
             </div>
@@ -27,23 +29,46 @@
                     <table>
                         <thead>
                             <tr>
-                                <th scope= "col">Account Name</th>
-                                <th scope= "col">Balance</th>
-                                <th scope= "col"></th>
-                                <th scope= "col"></th>
-                                <th scope= "col"></th>
+                                <th scope="col">Account Name</th>
+                                <th scope="col">Balance</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody id= "idTbody" class= "tBody"></tbody>
-                    </table>      
-                </div>             
-                <div  id= 'idMessageArea' class="clsMessageArea  clsRightPanelChild">
-                    
-                </div>                                  
+                        <tbody id="idTbody" class="tBody"></tbody>
+                    </table>
+                </div>
+                <div id='idMessageArea' class="clsMessageArea  clsRightPanelChild">
+
+                </div>
             </div>
         </div>
     </section>
 
     <script type="module" src="./scripts/index.js"></script>
+
+    <!--CITIES AND COMMUNITY SECTION-->
+
+    <section id="idMainSectionCity">
+        <div id="idContDivCity">
+            <h1 class="clsCityHeader">CITIES</h1>
+            <div id='idCityLeftPanel' class='clsCityPanel'>
+                <button type="button" id="idCreateCityBtn" class="clsCreateCityBtn">CREATE CITY</button>
+
+            </div>
+            <div id='idCityRightPanel' class='clsCityPanel'>
+
+            </div>
+            <div id='idCityDisplayArea' class='clsCityDisplayArea'>
+
+            </div>
+
+        </div>
+    </section>
+    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scriptsCity/cityIndex.js"></script>
+
 </body>
+
 </html>

@@ -73,12 +73,14 @@ th,td {
    border-bottom: 1px solid white;
 }
 
+/*------ Accounts Display Area 'div' ------*/
 .clsAccountsDiv{
     height: 68%;
     overflow: auto;
     margin-bottom: 0;
 }
 
+/*------ Message Area 'div'  ------*/
 .clsMessageArea {
     
     height: 31%; 
@@ -105,7 +107,24 @@ th,td {
     box-shadow:0 1px 3px black; 
 }
 
+/*------ Create Account Button ------*/
+.clsCreateAcctBtn {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    border: 3px solid green;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0 4px 7px black;
+}
+.clsCreateAcctBtn:hover {
+    background-color: floralwhite;
+}
+.clsCreateAcctBtn:active {
+    box-shadow: 0 2px 7px black;
+}
 
+/*------ Account Contents <tr> ------*/
 .acctBtns {
     border-radius: 5px;
     outline: none;
@@ -123,35 +142,6 @@ th,td {
     box-shadow:0 1px 3px black; 
 }
 
-.clsCreateAcct {
-    margin-top: 5px;
-    margin-bottom: 15px;
-    padding: 5px 10px;
-    border: 3px solid green;
-    border-radius: 10px;
-    outline: none;
-    box-shadow: 0 4px 7px black;
-}
-.clsCreateAcct:hover {
-    background-color: floralwhite;
-}
-.clsCreateAcct:active {
-    box-shadow: 0 2px 7px black;
-}
-
-/*#btnGrp {
-    max-width: 80%;
-    margin: 15px auto;
-    text-align: center;
-    padding: 10px;
-}
-
-.btns {
-    padding: 2px 10px;
-    margin-left: 7px;
-    font-size: .8rem;
-}*/
-
 .deposit {
     border: 2px solid green;
 }
@@ -164,6 +154,7 @@ th,td {
     border: 2px solid crimson;
 }
 
+/*------Create Account Form 'div' Contents ------*/
 .clsAcctFormDiv {
 text-align: center;   
 width: 80%;
@@ -200,7 +191,8 @@ box-shadow: 0 3px 7px black;
     box-shadow: 0 2px 7px black;
 }
 
-.clsDepositFormDiv {
+/*------ Deposit / Withdrawal Form 'div' Contents ------*/
+.clsDepositFormDiv,.clsWithdrwFormDiv {
     text-align: center;   
     width: 80%;
     height: 20%;
@@ -224,64 +216,30 @@ box-shadow: 0 3px 7px black;
     margin-bottom: 13px;
 }
 
-.clsDepositInpt {
+.clsDepositInpt,.clsWithdrwInpt {
     width: 80%;
     border: 2px solid green;
     box-shadow: 0 3px 7px black;
     background-color:rgb(231, 235, 241);
     
 }
-.clsDepositInpt:hover,.clsDepositInpt:active {
+.clsDepositInpt:hover,.clsDepositInpt:active,.clsWithdrwInpt:hover,.clsWithdrwInpt:active {
     background-color: floralwhite;
     box-shadow: 0 2px 7px black;
 }
 
-.clsAddDeposit {
+.clsAddDeposit,.clsWithdraw {
     border: 2px solid green;
     box-shadow: 0 3px 7px black;
     border-radius: 10px;
     outline: none;
 }
-.clsAddDeposit:hover,.clsAddDeposit:active {
+.clsAddDeposit:hover,.clsAddDeposit:active,.clsWithdraw:hover,.clsWithdraw:active {
     background-color: floralwhite;
     box-shadow: 0 2px 7px black; 
 }
 
-
-.clsWithdrwFormDiv {
-    text-align: center;   
-    width: 80%;
-    height: 20%;
-    padding-top: 10px;
-    margin: 0 auto;
-    margin-top: 10px;
-    border-radius: 20px;
-    background-color: rgb(247, 235, 247);
-    box-shadow: 0 3px 7px black;
-}
-
-.clsWithdrwInpt {
-    width: 80%;
-    border: 2px solid green;
-    box-shadow: 0 3px 7px black;
-    background-color:rgb(231, 235, 241);
-}
-.clsWithdrwInpt:hover,.clsWithdrwInpt:active {
-    background-color: floralwhite;
-    box-shadow: 0 2px 7px black;
-}
-
-.clsWithdraw {
-    border: 2px solid green;
-    box-shadow: 0 3px 7px black;
-    border-radius: 10px;
-    outline: none;
-}
-.clsWithdraw:hover,.clsWithdraw:active {
-    background-color: floralwhite;
-    box-shadow: 0 2px 7px black; 
-}
-
+/*------ Delete/Clear btn ------*/
 .clsDeleteForm {
     border: 2px solid green;
     box-shadow: 0 3px 7px black;
@@ -293,3 +251,263 @@ box-shadow: 0 3px 7px black;
     background-color: floralwhite;
     box-shadow: 0 2px 7px black; 
 }
+
+
+/*--------------------------------- CITIES AND COMMUNITY SECTION ----------------------*/
+
+
+#idMainSectionCity {
+    height: 100vh;
+    background-color: rgb(247, 235, 247);
+    
+}
+
+#idContDivCity {
+    min-height: 98vh;
+    width:98%;
+    text-align: center;
+    padding: 0 2px 2px 2px;
+    margin: 0 auto;
+    background-image: linear-gradient(rgba(204, 195, 172, 0.5),rgba(204, 195, 172, 0.5)), url('./images/city.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+
+.clsCityHeader {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: skyblue;
+}
+
+#idCityLeftPanel {
+    float: left;
+    min-width: 35%; 
+}
+
+/* Message Area ----------*/
+
+#idCityRightPanel {  /* Message Display Area */
+    float: right;
+    min-width: 64%;
+    overflow: auto;
+    padding-top: 2px;
+    position: relative;
+    padding-top: 10px 5px;
+    color: white;
+    font-weight: bold; 
+}
+
+.clsClearMsgBtn {
+    border: 2px solid red;
+    border-radius: 5px;
+    outline: none;
+    box-shadow:0 4px 7px black;
+    padding: 1px 2px;
+    margin-left: 7px;
+    font-size: .8rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.clsClearMsgBtn:hover {
+    background-color: floralwhite; 
+}
+.clsClearMsgBtn:active{
+    box-shadow:0 1px 3px black; 
+}
+
+.clsCityPanel {
+    height: 45vh;
+    border: 1px solid blue ;
+    border-radius: 20px;
+    background-color: transparent;
+    padding: 2px;
+}
+
+.clsCityDisplayArea {
+    min-width: 95%;
+    overflow: auto;
+    min-height: 52vh;
+    border: 1px solid blue ;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 5px;
+    padding-top:15px;    
+}
+
+.clsCreateCityBtn {
+    margin-top: 2px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border: 3px solid green;
+    border-radius: 10px;
+    outline: none;
+    background-color: rgb(235, 223, 235);
+    box-shadow: 0 4px 7px blue; 
+}
+.clsCreateCityBtn:hover {
+    background-color: floralwhite;
+}
+.clsCreateCityBtn:active {
+    box-shadow: 0 2px 7px blue;
+}
+
+/* Create city form 'div' */
+.clsCityFormDiv {
+    text-align: center;   
+    width: 80%;
+    min-height: 25%;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    margin: 0 auto;
+    margin-top: 7px;
+    border-radius: 20px;
+    background-color: transparent;
+    box-shadow: 0 3px 7px black;
+}
+
+.clsCityFormInpt {
+    width: 60%;
+    border: 1px solid blue;
+    box-shadow: 0 4px 7px black;
+    background-color:rgb(235, 223, 235);
+}
+.clsCityFormInpt:hover,.clsCityFormInpt:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black;
+}
+
+.clsAddCityBtn {
+    border: 1px solid blue;
+    box-shadow: 0 4px 7px black;
+    border-radius: 10px;
+    background-color: rgb(235, 223, 235);
+    outline: none;
+}
+.clsAddCityBtn:hover {
+    background-color: floralwhite;     
+}
+.clsAddCityBtn:active {
+    box-shadow: 0 2px 7px black;
+}
+
+/* Moved In / Moved Out forms 'div' */
+.clsMovedInFormDiv,.clsMovedOutFormDiv {
+    text-align: center;   
+    width: 80%;
+    min-height: 30%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: transparent;
+    box-shadow: 0 3px 7px black;
+}
+
+.clsMovedTitle {
+    font-size: 0.9rem;
+    text-align: center;
+    width: 80%;
+    padding: 1px 0;
+    border: 1px solid blue;
+    box-shadow: 0 4px 7px black;
+    background-color:rgb(235, 223, 235);
+    margin: 0 auto;
+    margin-bottom: 13px;
+}
+
+.clsMovedInpt {
+    width: 60%;
+    border: 1px solid blue;
+    box-shadow: 0 4px 7px black;
+    background-color:rgb(235, 223, 235);
+}
+.clsMovedInpt:hover,.clsMovedInpt:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black;
+}
+.clsMovedInBtn,.clsMovedOutBtn {
+    border: 1px solid blue;
+    box-shadow: 0 4px 7px black;
+    border-radius: 10px;
+    background-color:rgb(235, 223, 235);
+    outline: none;
+}
+.clsMovedInBtn:hover,.clsMovedInBtn:active,.clsMovedOutBtn:hover,.clsMovedOutBtn:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black;
+} 
+
+.clsDeleteFormCity {
+    border: 2px solid crimson;
+    box-shadow: 0 4px 7px black;
+    border-radius: 10px;
+    outline: none;
+    background-color: (235, 223, 235);
+    margin-left: 7px;
+}
+.clsDeleteFormCity:hover,.clsDeleteFormCity:active {
+    background-color: floralwhite;
+    box-shadow: 0 2px 7px black; 
+}
+
+/* City contents 'div' */
+
+.clsCityDiv {
+    float: left;
+    color: rgb(235, 223, 235);
+    text-align: left;
+    box-shadow: 0 3px 7px black;
+    background-color: transparent;
+    min-width:22%;
+    max-height: 60%;
+    overflow:auto;
+    padding: 0 0 0 5px;
+    position: relative;
+    border-radius: 15px;
+    margin-right: 13px;
+}
+
+.cityBtns {
+    border-radius: 5px;
+    outline: none;
+    box-shadow:0 4px 7px black;
+    padding: 1px 2px;
+    margin-left: 7px;
+    font-size: .8rem;
+    background-color: (235, 223, 235);
+}
+.cityBtns:hover {
+    background-color: floralwhite;
+ }
+.cityBtns:active {
+    box-shadow:0 2px 7px black; 
+}
+
+.moveIn {
+    border: 2px solid green;
+    position: absolute;
+    top: 65px;
+    right: 4px;
+}
+
+.moveOut {
+    border: 2px solid darkblue;
+    position: absolute;
+    top: 105px;
+    right: 4px;
+}
+
+.deleteCity {
+    border: 2px solid crimson;
+    position: absolute;
+    top: 25px;
+    right: 4px;
+}
+
+
+
