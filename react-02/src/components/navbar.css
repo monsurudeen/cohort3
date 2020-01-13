@@ -1,8 +1,15 @@
 #idNav {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    padding: 12px;       
+    justify-content: space-evenly;    
+    min-height: 10vh;    
+    margin-bottom: 5px;       
+  }
+
+  #idBodyDiv {
+    min-height: 80vh;
+    text-align: center;
+    padding-top: 50px;
   }
     
   .icon {

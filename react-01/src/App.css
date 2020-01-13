@@ -16,14 +16,12 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  min-width: 100vh;
   display: flex;
   flex-direction: column;
-  /*align-items: center;*/
+  align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
-  color: blue;
-  padding-top: 15px;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-link {
@@ -37,8 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.IconDiv {
-  max-height : 100px;
 }
