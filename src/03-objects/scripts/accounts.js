@@ -88,7 +88,7 @@ class AccountController {
     const addAcctInpt = document.createElement('input');
     addAcctInpt.setAttribute('id', 'idAddAcctInpt');
     addAcctInpt.setAttribute('value', 'Add account');
-    addAcctInpt.setAttribute('type', 'submit');
+    addAcctInpt.setAttribute('type', 'button');
     addAcctInpt.className = 'clsAddAcctInpt';
     acctFormDiv.appendChild(addAcctInpt);
 

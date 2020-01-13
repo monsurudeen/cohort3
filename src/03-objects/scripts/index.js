@@ -8,7 +8,7 @@ containerDiv.addEventListener("click", (event) => {
 
 
     switch (event.target.className) {
-        case "clsCreateAcct": {
+        case "clsCreateAcctBtn": {
             let targetParent = event.target.parentElement; // navigating to the Left Panel from the 'create acct button,
             let childrenArr = Array.from(targetParent.children);
             let childrenIds = childrenArr.map((child) => {  // gets the ids' of Left Panel children..
@@ -21,7 +21,7 @@ containerDiv.addEventListener("click", (event) => {
             break;
         }
 
-        case "clsAddAcctInpt": {
+       case "clsAddAcctInpt": {
             let parent = event.target.parentElement;
             const acctName = idAcctNameInpt; // from the create acct form
             const acctBal = idBalInpt;       // from the create acct form 
@@ -55,9 +55,6 @@ containerDiv.addEventListener("click", (event) => {
                     messageArea.innerHTML = `<button class='clsClearMsg'>clear</button>
                                              <p><b> Please enter a name for account </b></p>`;
             }     
-
-            acctName.value = "";
-            acctBal.value = "";
 
             break;
         }
