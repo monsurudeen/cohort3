@@ -7,7 +7,7 @@ function TableBody(props) {
   return (
     <tbody id="idTbody" className="tBody">
       {props.accountList.map((account) =>
-        ( <CreateAcctContent key={account.accName} counter={account.accName} account={account} depositForm={props.createDepositForm} withdrawForm={props.createWithdrawForm} keyName = {props.keyName}  namesList ={props.namesList} deleteAcctEntry={props.deleteAcctEntry} />)
+        ( <CreateAcctContent key={account.accName} account={account} forms={props.forms} getAcctIndex= {props.getAcctIndex} deleteAcctEntry={props.deleteAcctEntry} />)
 
       )
 

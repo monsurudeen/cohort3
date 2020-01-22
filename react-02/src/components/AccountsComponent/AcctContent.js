@@ -10,9 +10,9 @@ function CreateAcctContent(props) {
             <tr>
                 <td>{props.account.accName}</td>
                 <td>{props.account.bal}</td>
-                <td><button className="acctBtns deposit" onClick={ () => {props.depositForm(); props.keyName(props.account.accName)}}>deposit</button></td>
-                <td><button className="acctBtns withdraw" onClick={ () => {props.withdrawForm(); props.keyName(props.account.accName)}}>withdraw</button></td>
-                <td><button className="acctBtns delete" onClick={ () => {props.keyName(props.account.accName); props.deleteAcctEntry()}}>delete</button></td>
+                <td><button className="acctBtns deposit" onClick={()=> {props.forms(2); props.getAcctIndex(props.account.accName)}}>deposit</button></td>
+                <td><button className="acctBtns withdraw" onClick={()=> {props.forms(3); props.getAcctIndex(props.account.accName)}}>withdraw</button></td>
+                <td><button className="acctBtns delete" onClick={()=> {props.getAcctIndex(props.account.accName); props.deleteAcctEntry()}}>delete</button></td>
              </tr>
         )
     }

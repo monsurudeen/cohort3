@@ -2,7 +2,7 @@ import React from 'react';
 import './Accounts.css';
 import CreateAcctForm from './CreateAcctForm.js';
 import TableBody from './AccountsTableBody.js';
-import { Account, AccountController } from './accountsReact.js'
+import { Account, AccountController } from './accountsClass.js'
 import DepositForm from './DepositForm.js';
 import WithdrawalForm from './WithdrawalForm.js';
 import DisplayInfo from './DisplayInfo.js';
@@ -24,7 +24,7 @@ class Accounts extends React.Component {
     this.acctController = new AccountController();
     this.account = new Account();    
     this.temp = false;
-    this.nameKey = '';
+    this.acctIndex = '';
 
   }
 
@@ -33,43 +33,42 @@ class Accounts extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  keyName = (name) => {
+  getAcctIndex = (name) => {
     if (this.acctController.accountList.length === 0) {
       return
     } else {
       this.acctController.accountList.forEach((element, index) => {
         if (element.accName === name) {
-          this.nameKey = index;
+          this.acctIndex = index;
         }
       })
-
-      return this.nameKey;
+      return this.acctIndex;
     }
   }
 
   depositUpdate = () => {
     if ((this.state.acctDeposit !== '') /*|| (!(this.state.acctDeposit > 0))*/) {
-      this.acctController.accountList[this.keyName()].deposit(this.state.acctDeposit);
+      this.acctController.accountList[this.getAcctIndex()].deposit(this.state.acctDeposit);
     }
   }
 
   withdrawalUpdate = () => {
     if ((this.state.acctWithdrawal !== '') /*|| (!(this.state.acctDeposit > 0))*/) {
-      this.acctController.accountList[this.keyName()].withdraw(this.state.acctWithdrawal);
+      this.acctController.accountList[this.getAcctIndex()].withdraw(this.state.acctWithdrawal);
     }
   }
   // For display purpose..
   selectedAcct = () => {
-    if ((this.acctController.accountList.length === 0) || ((this.state.acctDeposit === '') && (this.state.acctWithdrawal === ''))) {
+    if ((this.acctController.accountList.length === 0) || ((this.state.acctDeposit === '')
+     && (this.state.acctWithdrawal === ''))) {
       return
     } else {
-      return this.acctController.accountListNames()[this.keyName()];
+      return this.acctController.accountListNames()[this.getAcctIndex()];
     }
   }
 
 
-  createTableRow = () => {
-    //this.acctController.createAccount(this.state.acctName, this.state.acctBal);
+  createTableRow = () => {    
     this.runTableRow();
     this.deleteForm();
   }
@@ -135,13 +134,14 @@ class Accounts extends React.Component {
   }
 
   deleteAcctEntry = () => {
-    this.acctController.removeAcctByIndex(this.keyName());
+    this.acctController.removeAcctByIndex(this.getAcctIndex());
     this.deleteForm();
   }
 
 
-  render() { 
-       
+  render() {
+    //console.log(this.AcctNameExist())
+    //console.log(this.acctController.accountList)
     return (
       <section id="mainSection">
         <div id="idContDiv">
@@ -167,7 +167,7 @@ class Accounts extends React.Component {
                     <th scope="col"></th>
                   </tr>
                 </thead>
-                <TableBody createDepositForm={() => this.createForm(2)} createWithdrawForm={() => this.createForm(3)} accountList={this.acctController.accountList} keyName={this.keyName} deleteAcctEntry={this.deleteAcctEntry} />
+                <TableBody forms={this.createForm} accountList={this.acctController.accountList} getAcctIndex={this.getAcctIndex} deleteAcctEntry={this.deleteAcctEntry} />
               </table>
             </div>
             <div id='idMessageArea' className="clsMessageArea  clsRightPanelChild">
