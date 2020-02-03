@@ -15,19 +15,19 @@ const functions = {
     },
 
     subtract: (a, b) => {
-        
+
         return Number(a) - Number(b);
     },
 
 
     multiply: (a, b) => {
-        
+
         return Number(a) * Number(b);
     },
 
 
     divide: (a, b) => {
-        
+
         return Number(a) / Number(b);
     },
 
@@ -72,7 +72,7 @@ const functions = {
 
     //------------------- TAX CALCULATOR FUNCTIONS ----------------------
 
-   
+
 
 
     taxCalculator: (income) => {
@@ -108,18 +108,49 @@ const functions = {
                 ((33 / 100) * (income - 210371));
         }
         return result.toFixed(3);
-    },                  
-              
-     //------------------- WORKING WITH DICTIONARIES (FUNCTIONS) ----------------------
+    },
 
-     lookupFn: (province, scrnVal) => {
-            let arr = Object.keys(province).filter((prov) => {
+    //------------------- WORKING WITH ARRAYS --- FUNCTIONS ----------------------
+
+    isValidNo: (scrnValArr) => {
+
+        return (!(isNaN(Number(scrnValArr))) && (scrnValArr.length > 0));
+    },
+
+    addNumArr: (arr1, scrnValArr) => {
+        arr1.push(scrnValArr);
+        return arr1[arr1.length - 1].toString();
+    },
+
+    showArr: (arr2, msgArr) => {
+        if (arr2.length > 0) {
+            msgArr.textContent = "The list contains : "
+                + arr2.toString();
+        }
+        else {
+            msgArr.textContent = "The list is empty";
+        }
+        return arr2.toString();
+    },
+
+
+
+
+
+
+
+
+
+    //------------------- WORKING WITH DICTIONARIES (FUNCTIONS) ----------------------
+
+    lookupFn: (province, scrnVal) => {
+        let arr = Object.keys(province).filter((prov) => {
             return prov === scrnVal.toUpperCase();
         });
-           return province[arr];
-     },
-      
-     
+        return province[arr];
+    },
+
+
 
 
 

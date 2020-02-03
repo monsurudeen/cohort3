@@ -1,7 +1,7 @@
-const screenTax = document.querySelector("#screen-tax");
-const calcBtn = document.querySelector("#calc-btn");
-const clearBtn = document.querySelector("#clear-tax");
-const msgAreaTax = document.querySelector("#message-tax");
+/*const screenTax = document.querySelector("#idScreenTax");
+const calcBtn = document.querySelector("#idCalcBtn");
+const clearBtn = document.querySelector("#idClearTax");
+const msgAreaTax = document.querySelector("#idMessageTax");
 
 
 const a = (15/100) * 47630;
@@ -16,7 +16,7 @@ const d = (29/100) * 62704;
          
      }*/
 
-const taxCalculator = (income) => {
+/*const taxCalculator = (income) => {
     
     let result = 0;
 
@@ -55,7 +55,7 @@ const taxCalculator = (income) => {
 calcBtn.addEventListener("click", () => {
      if(screenTax.value.length > 0){        
       let temp = taxCalculator(Number(screenTax.value));
-      msgAreaTax.textContent = "Your tax amount is" + temp;
+      msgAreaTax.textContent = "Your tax amount is $" + temp;
      }
      else{
            msgAreaTax.textContent = "Please enter a valid amount";
@@ -64,20 +64,7 @@ calcBtn.addEventListener("click", () => {
         
 })
           
-    
-
-     
-
-      
-          
-        
-
-    
-
- 
-
-
-screenTax.addEventListener("click", () => {
+  screenTax.addEventListener("click", () => {
       screenTax.value = "";
       msgAreaTax.textContent = `Welcome`;
 
@@ -86,12 +73,10 @@ screenTax.addEventListener("click", () => {
 clearBtn.addEventListener("click", () => { 
     screenTax.value = "";
     msgAreaTax.textContent = "Welcome";
-} )
+} )*/
 
-msgAreaTax.addEventListener("click", () => {
-    msgAreaTax.textContent = `Welcome bro`;
-  
-})
+
+
 
 
 

@@ -57,6 +57,46 @@ taxCont.addEventListener('click', (e) => {
  });
 
 
+ //-------------------------- ------- ARRAYS -------------------------------
+
+const arrCont = idArrays;
+const screenArr = idScreenArr;
+const msgAreaArr = idMessageArr;
+const addBtn = idAddBtn;
+const showBtn = idShowBtn;
+const totalBtn = idTotalBtn;
+const clearBtnArr = idClearArr;
+
+const arr = [];
+
+
+arrCont.addEventListener("click", (e) => {
+    if(e.target.id ='idAddBtn'){
+      
+        if(functions.isValidNo(screenArr.value)){
+             let temp1 = functions.addNumArr(arr, screenArr.value);
+             msgAreaArr.textContent = "You just added "
+                     + temp1 + " to the list" ;
+             screenArr.value = "";
+             
+        }
+        //else{
+           // msgAreaArr.textContent = `You entered an invalid value,
+                                      // please enter a number`;
+       // }
+       
+    }
+
+   else if(e.target.id ='idShowBtn'){
+
+        functions.showArr(arr, msgAreaArr);
+    }
+
+    return;
+})
+
+
+
 
 
 

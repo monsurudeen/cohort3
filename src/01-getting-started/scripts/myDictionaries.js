@@ -4,7 +4,7 @@ const lookUpBtn = document.querySelector("#lookup");
 
 
 
-const province = {
+const provinces = {
     AB : "Alberta",
     BC : "British Columbia",
     MB : "Manitoba",
@@ -30,13 +30,13 @@ screenDict.addEventListener("click",  () => {
 })
 
 lookUpBtn.addEventListener("click", () => {
-       let arr = Object.keys(province).filter((prov) => {
+       let arr = Object.keys(provinces).filter((prov) => {
             return prov === screenDict.value.toUpperCase()
         })
        
         if(arr.length > 0){        
           
-            msgAreaDict.textContent = `Province name is ` + province[arr];
+            msgAreaDict.textContent = `Province name is ` + provinces[arr];
         }
         else{
               msgAreaDict.textContent = `You enterd an invalid code,
