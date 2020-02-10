@@ -1,10 +1,14 @@
 import React from 'react';
-
+import {Node, DoublyLinkedList } from './linkedListClass.js'
 
 
 
 class LinkedList extends React.Component {
-
+  constructor(props) {
+      super(props)
+      this.node = new Node();
+      this.double = new DoublyLinkedList() 
+  }
 
 
 
