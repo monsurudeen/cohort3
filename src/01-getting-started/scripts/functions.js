@@ -72,9 +72,6 @@ const functions = {
 
     //------------------- TAX CALCULATOR FUNCTIONS ----------------------
 
-
-
-
     taxCalculator: (income) => {
 
         const a = (15 / 100) * 47630;
@@ -110,6 +107,7 @@ const functions = {
         return result.toFixed(3);
     },
 
+
     //------------------- WORKING WITH ARRAYS --- FUNCTIONS ----------------------
 
     isValidNo: (scrnValArr) => {
@@ -117,31 +115,68 @@ const functions = {
         return (!(isNaN(Number(scrnValArr))) && (scrnValArr.length > 0));
     },
 
-    addNumArr: (arr1, scrnValArr) => {
+    addNumArr: (arr1, scrnValArr, msgArr1) => {
         arr1.push(scrnValArr);
+        msgArr1.textContent = "You just added "+ arr1[arr1.length - 1] + " to the list" ;                
+        scrnValArr = "";    
         return arr1[arr1.length - 1].toString();
     },
 
-    showArr: (arr2, msgArr) => {
+
+    showArr: (arr2, msgArr2) => {
         if (arr2.length > 0) {
-            msgArr.textContent = "The list contains : "
+            msgArr2.textContent = "The list contains : "
                 + arr2.toString();
         }
         else {
-            msgArr.textContent = "The list is empty";
+            msgArr2.textContent = "The list is empty";
         }
         return arr2.toString();
     },
 
 
+    arrSum: (arr3, msgArr3) => {
+          if(arr3.length > 0){
+              let newArr = arr3.reduce( (acc, num) => {
+                  return (acc + Number(num));
+              },0 );
+
+             msgArr3.textContent = 'Sum of list elements is : ' + newArr.toString();
+          }else
+               { msgArr3.textContent = 'The list is empty';
+          }
+    },
 
 
-
-
-
-
-
+    clearArr: (arr4, msgArr4,) => {
+          if(arr4.toString() !== ""){
+              let counter = arr4.length;
+              for(let i = 0; i < counter; i++){
+                  arr4.pop();
+              }
+              msgArr4.textContent = `You just cleared the list`;
+          }          
+    },
+    
+    
     //------------------- WORKING WITH DICTIONARIES (FUNCTIONS) ----------------------
+
+   provinces : {
+                  AB : "Alberta",
+                  BC : "British Columbia",
+                  MB : "Manitoba",
+                  NB : "New Brunswick",
+                  NL : "Newfoundland and Labrador",
+                  NS : "Nova Scotia",
+                  ON : "Ontario",
+                  PE : "Prince Edward Island",
+                  QC : "Quebec",
+                  SK : "Saskatchewan",
+                  NT : "Northwest Territories",
+                  NU : "Nunavut",
+                  YT : "Yukon"
+    
+              },
 
     lookupFn: (province, scrnVal) => {
         let arr = Object.keys(province).filter((prov) => {
@@ -149,19 +184,6 @@ const functions = {
         });
         return province[arr];
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 };

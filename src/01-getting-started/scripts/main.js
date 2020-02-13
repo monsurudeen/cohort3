@@ -29,7 +29,6 @@ calcDiv.addEventListener("click", (e) => {
 
 });
 
-
 //-- ---------------------- CANADIAN TAX CALCULATOR -------------------------------
 
 const taxCont = idTaxCalc;
@@ -56,7 +55,6 @@ taxCont.addEventListener('click', (e) => {
         }     
  });
 
-
  //-------------------------- ------- ARRAYS -------------------------------
 
 const arrCont = idArrays;
@@ -66,39 +64,39 @@ const addBtn = idAddBtn;
 const showBtn = idShowBtn;
 const totalBtn = idTotalBtn;
 const clearBtnArr = idClearArr;
-
 const arr = [];
 
-
 arrCont.addEventListener("click", (e) => {
-    if(e.target.id ='idAddBtn'){
+    if(e.target.id ==='idAddBtn'){
       
         if(functions.isValidNo(screenArr.value)){
-             let temp1 = functions.addNumArr(arr, screenArr.value);
-             msgAreaArr.textContent = "You just added "
-                     + temp1 + " to the list" ;
-             screenArr.value = "";
-             
+              functions.addNumArr(arr, screenArr.value, msgAreaArr );
+              screenArr.value = "";                 
         }
-        //else{
-           // msgAreaArr.textContent = `You entered an invalid value,
-                                      // please enter a number`;
-       // }
-       
+        else{
+            msgAreaArr.textContent = `You entered an invalid value,
+                                       please enter a number`;
+          screenArr.value = "";
+       }       
     }
 
-   else if(e.target.id ='idShowBtn'){
+    if(e.target.id ==='idShowBtn'){
 
         functions.showArr(arr, msgAreaArr);
     }
 
-    return;
+    if(e.target.id ==='idTotalBtn'){
+
+        functions.arrSum(arr, msgAreaArr);
+    }
+
+    if(e.target.id ==='idClearArr'){
+
+        functions.clearArr(arr, msgAreaArr);
+        screenArr.value = "";
+    }
+    
 })
-
-
-
-
-
 
 //-------------------------- ------- DICTIONARIES -------------------------------
 const dictCont = idDictionaries;
@@ -107,34 +105,12 @@ const msgAreaDict = idMessageDict;
 const lookUpBtn = idLookup;
 
 
-
-const provinces = {
-    AB : "Alberta",
-    BC : "British Columbia",
-    MB : "Manitoba",
-    NB : "New Brunswick",
-    NL : "Newfoundland and Labrador",
-    NS : "Nova Scotia",
-    ON : "Ontario",
-    PE : "Prince Edward Island",
-    QC : "Quebec",
-    SK : "Saskatchewan",
-    NT : "Northwest Territories",
-    NU : "Nunavut",
-    YT : "Yukon"
-
-};
-
-
 dictCont.addEventListener("click",  (e) => {
      if(e.target.id === 'idLookup'){
-
-        let temp = functions.lookupFn(provinces, screenDict.value);
+        let temp = functions.lookupFn(functions.provinces, screenDict.value);
         
-             msgAreaDict.textContent = `Province name is ` + temp;
-                     
+             msgAreaDict.textContent = `Province name is ` + temp;                     
        }
-
        if(e.target.id === 'idScreenDict'){
            screenDict.value = "";
            msgAreaDict.textContent = `Welcome`;        
