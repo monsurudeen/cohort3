@@ -75,8 +75,7 @@ window.onload = async (event) => {
                          <p>The <b>southermost</b> city is <b>${commInstance.getMostSouthern().name}</b> at latitude <b>${commInstance.getMostSouthern().lat}</b></p>
                          <p> The <b>northernmost</b> city is <b>${commInstance.getMostNorthern().name}</b> at latitude <b>${commInstance.getMostNorthern().lat}</b><p/>`
 
-                            functionsCityDom.deleteElement(addCityBtnparent);
-
+                            functionsCityDom.deleteElement(addCityBtnparent);  
                         } else {
                             messageArea.innerHTML = `<button class='clsClearMsgBtn'>clear</button>
                                                      <p><b> Enter a valid value </b></p>

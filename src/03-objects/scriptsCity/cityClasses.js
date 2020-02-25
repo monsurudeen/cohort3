@@ -57,7 +57,7 @@ class Community {
     }
 
     getCity(key) {
-        let cityKey = this.cityList.filter((city) => city.key === key);
+        let cityKey = this.cityList.filter((city) => city.keyVal === key);
         return cityKey[0];
     }
 
