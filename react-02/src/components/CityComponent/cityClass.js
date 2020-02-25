@@ -1,14 +1,14 @@
 class CityClass {
-    constructor(name, keyVal, lat, long, popl) {
+    constructor(name, key, lat, long, popl) {
         this.name = name;
-        this.keyVal = keyVal;
+        this.key = key;
         this.lat = parseFloat(lat);
         this.long = parseFloat(long);
         this.popl = parseFloat(popl);
     }
 
     show() {
-        return `Name: ${this.name}, Key: ${this.keyVal}, Lat: ${this.lat}, Long: ${this.long}, Population: ${this.popl}`
+        return `Name: ${this.name}, Key: ${this.key}, Lat: ${this.lat}, Long: ${this.long}, Population: ${this.popl}`
     }
     movedIn(value) {
         return (this.popl += parseFloat(value));
@@ -32,35 +32,45 @@ class CityClass {
 class Community {
     constructor() {
         this.cityList = [];
+        this.sortedCityList = [];
         this.cityDefault = [
             ['lagos', 1, -78, 120, 500], 
             ['boston', 2, 62, -56, 1100],
             ['harare', 3, -49, 99, 10000],
-            ['bogota', 4, 77, -156, 50000],
+            ['bogota', 4, 22, -15, 50000],
             ['abuja', 5, 35, 79, 200000] 
         ];        
         this.cityType = '';
         this.cityTypeList = [];
     }
 
-    createCity([name, keyVal, lat, long, popl]) {
+    createCity([name, key, lat, long, popl]) {
         this.city = new CityClass(
-               [name, keyVal, lat, long, popl][0], 
-               [name, keyVal, lat, long, popl][1],
-               [name, keyVal, lat, long, popl][2],
-               [name, keyVal, lat, long, popl][3],
-               [name, keyVal, lat, long, popl][4]
+               [name, key, lat, long, popl][0], 
+               [name, key, lat, long, popl][1],
+               [name, key, lat, long, popl][2],
+               [name, key, lat, long, popl][3],
+               [name, key, lat, long, popl][4]
              );
         this.cityType = this.city.howBig();
         this.cityTypeList.push(this.cityType);                                                          
-        this.cityList.push(this.city);       
+        this.cityList.push(this.city);
+        this.sortedCityList = this.sortedCities();         
+        return this.city;       
     }
 
     createCityDefault(cityArr) {        
         cityArr.forEach((city) => {            
             this.createCity(city)
         } )
-        this.cityType = '';
+       // this.cityType = '';
+    }
+
+    createCityFromServer(serverData) {
+        let serverDataList = serverData.map((city) => {
+            return this.createCity([city.name, city.key, city.lat, city.long, city.popl])
+        });
+        return serverDataList;
     }
 
     getCityType() {
@@ -71,25 +81,28 @@ class Community {
 
     getKeys() {
         this.keyList = this.cityList.map((entry) => {
-            return ({ keyVal: entry.keyVal })
+            return ({ 'key': entry.key })
         })
         return this.keyList;
     }
 
+    getServerHighestKey(list) {
+        let keyz = list.sort((a, b) => b.key - a.key);
+        return keyz[0].key;
+    }
+
     getHighestKey() {
-        let key = this.cityList.sort((a, b) => b.keyVal - a.keyVal);
-        return key[0].keyVal;
+        let keyz = this.cityList.sort((a, b) => b.key - a.key);
+        return keyz[0].key;
     }
 
-    createCityFromServer(serverData) {
-        this.serverDataList = serverData.map((city) => {
-            return this.createCity(city.name, city.keyVal, city.lat, city.long, city.popl)
-        });
-        return this.serverDataList;
+    sortedCities() {
+         let cities = this.cityList.sort((a, b) => a.key - b.key);
+        return [...cities];
     }
-
+    
     getCity(key) {
-        let cityKey = this.cityList.filter((city) => city.keyVal === key);
+        let cityKey = this.cityList.filter((city) => city.key === key);
         return cityKey[0];
     }
 
@@ -102,14 +115,14 @@ class Community {
         return this.cityList.reduce((acc, city) => { return acc + Number(city.popl) }, 0);
     }
 
-    getMostNorthern() {
+    getMostNorthern() {        
         let north = this.cityList.sort((a, b) => b.lat - a.lat);
-        return north[0];
+        return north[0];        
     }
 
-    getMostSouthern() {
+    getMostSouthern() {       
         let south = this.cityList.sort((a, b) => a.lat - b.lat);
-        return south[0];
+        return south[0];       
     }
 
     deleteCity(indexNum) {

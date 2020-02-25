@@ -1,6 +1,7 @@
 import React from 'react';
 import './City.css';
 import { CityClass, Community } from './cityClass.js';
+import { postData, getData, addData, clearData, deleteData, updateData } from './cityAPI.js'
 import CreateCityForm from './CreateCityForm.js';
 import CityDiv from './CityDiv.js';
 import MovedInForm from './MovedInForm.js'
@@ -28,6 +29,16 @@ class City extends React.Component {
     this.keyIndex = '';
     this.temp = false;
     this.result = false;
+    this.tempIndex = 0; 
+    
+   /* window.addEventListener('load', async(event) => {
+      let serverData = []
+      serverData = await getData();
+      if(serverData.length !== 0) {
+        this.lastkeyVar = this.comntyInstance.getServerHighestKey(serverData);
+        this.comntyInstance.createCityFromServer(serverData)
+      } 
+    });*/
   }
 
 
@@ -43,8 +54,8 @@ class City extends React.Component {
     if (this.comntyInstance.cityList.length === 0) {
       return
     } else {
-      this.comntyInstance.cityList.forEach((element, index) => {
-        if (parseFloat(element.keyVal) === parseFloat(keyz)) {
+      this.comntyInstance.sortedCities().forEach((element, index) => {
+        if (parseFloat(element.key) === parseFloat(keyz)) {
           this.keyIndex = index;
         }
       })
@@ -52,9 +63,23 @@ class City extends React.Component {
     }
   }
 
-  movedIn = () => {
+ async componentDidMount() {   
+      let serverData = []
+      serverData = await getData();
+      if(serverData.length !== 0) {
+        this.lastkeyVar = this.comntyInstance.getServerHighestKey(serverData);
+        this.comntyInstance.createCityFromServer(serverData);
+        this.setState({ isPresent: false })
+      }     
+ }
+
+  movedIn = async() => {
     if ((this.state.movedIn !== '')&&(parseFloat(this.state.movedIn) >= 0)) {
-      this.comntyInstance.cityList[this.getCityIndex()].movedIn(this.state.movedIn)
+      let tempIndex = this.getCityIndex();
+      this.comntyInstance.sortedCities()[tempIndex].movedIn(this.state.movedIn);
+      updateData(this.comntyInstance.cityList[tempIndex]);            
+      this.comntyInstance.cityTypeList[tempIndex] = 
+      this.comntyInstance.cityList[tempIndex].howBig();
     }
   }
 
@@ -63,9 +88,13 @@ class City extends React.Component {
     this.deleteForm()
   }
 
-  movedOut = () => {
+  movedOut = async() => {
     if((this.state.movedOut !== '')&&(parseFloat(this.state.movedOut) >= 0)) {
-    this.comntyInstance.cityList[this.getCityIndex()].movedOut(this.state.movedOut)
+      let tempIndex = this.getCityIndex();
+      this.comntyInstance.sortedCities()[tempIndex].movedOut(this.state.movedOut);
+      updateData(this.comntyInstance.cityList[tempIndex]);
+      this.comntyInstance.cityTypeList[tempIndex] =
+      this.comntyInstance.cityList[tempIndex].howBig();
     }
   }
 
@@ -98,13 +127,15 @@ class City extends React.Component {
     return this.result;
   }
 
-  createCityChecklist =() => {
+  // for summary display info.
+  createCityChecklist =() => {  
     return [
              this.createCityConditions(),
              this.latlongExist()
     ]
   }
 
+  // getting the next unique key
   keyValue = () => {
     if(this.comntyInstance.cityList.length !==0){
       this.lastkeyVar =
@@ -125,17 +156,18 @@ class City extends React.Component {
     ])
   }
 
-  runCityDiv = () => {
+  runCityDiv = async() => {
     if ((this.createCityConditions())) {
       if (!(this.latlongExist())) {
-        this.comntyInstance.createCity(this.cityData());
+        const listData = this.comntyInstance.createCity(this.cityData());
+        addData(listData);       
       }
     }
   }
 
-  createCityDiv = () => {
-    this.runCityDiv();
-    this.deleteForm();
+  createCityDiv = async() => {
+    this.runCityDiv();        
+    this.deleteForm();       
   }
 
   citySummary = () => {
@@ -168,15 +200,24 @@ class City extends React.Component {
     this.setState({ isPresent: false })
   }
 
-  deleteCityEntry = () => {
-    this.comntyInstance.deleteCity(this.getCityIndex());
+  deleteCityEntry = async() => {
+    let tempIndex = this.getCityIndex(); 
+   /*the next line fetches the key list before calling deleteCity()
+    as deleteCity() will distort the indexing of the key list if called first*/  
+    let keyList = this.comntyInstance.getKeys() 
+    deleteData(keyList[tempIndex])              
+    this.comntyInstance.deleteCity(tempIndex);
     this.deleteForm();
   }
 
 
 
 
-  render() {
+  render() { 
+    console.log(this.tempIndex);   
+    console.log(this.comntyInstance.cityList)
+    console.log(this.comntyInstance.sortedCities())   
+    
     return (
       <section id="idMainSectionCity">
         <div id="idContDivCity">
@@ -185,17 +226,17 @@ class City extends React.Component {
             <button type="button" id="idCreateCityBtn" className="clsCreateCityBtn" onClick={() => { this.createForm(1) }}>CREATE CITY</button>
             <button type="button"  className="clsCreateCityBtn" onClick={() => {this.comntyInstance.createCityDefault(this.comntyInstance.cityDefault);
              this.deleteForm() }}>LOAD DEFAULT CITIES</button>
-            {this.state.isPresent === 1 && <CreateCityForm handleChange={this.handleChange} deleteForm={this.deleteForm} createCityDiv={this.createCityDiv} />}
+            {this.state.isPresent === 1 && <CreateCityForm handleChange={this.handleChange} createCityDiv={this.createCityDiv} deleteForm={this.deleteForm} />}
             {this.state.isPresent === 2 && <MovedInForm handleChange={this.handleChange} movedInUpdate={this.movedInUpdate} deleteForm={this.deleteForm} />}
-            {this.state.isPresent == 3 && <MovedOutForm handleChange={this.handleChange} movedOutUpdate={this.movedOutUpdate} deleteForm={this.deleteForm} />}
+            {this.state.isPresent === 3 && <MovedOutForm handleChange={this.handleChange} movedOutUpdate={this.movedOutUpdate} deleteForm={this.deleteForm} />}
           </div>
           <div id='idCityRightPanel' className='clsCityPanel'>
             <CitySummary list ={this.comntyInstance.cityList} citySummary ={this.citySummary()}
              cityStates ={this.cityStates()} createCityChecklist ={this.createCityChecklist()} />
           </div>
           <div id='idCityDisplayArea' className='clsCityDisplayArea'>
-            <CityDiv cityList={this.comntyInstance.cityList} forms={this.createForm} cityTypeList ={this.comntyInstance.cityTypeList}
-              deleteCityEntry={this.deleteCityEntry} getCityIndex={this.getCityIndex} />
+            <CityDiv cityList={this.comntyInstance.sortedCities()} forms={this.createForm} cityTypeList ={this.comntyInstance.cityTypeList}
+               getCityIndex={this.getCityIndex} deleteCityEntry={this.deleteCityEntry} />
           </div>
 
         </div>

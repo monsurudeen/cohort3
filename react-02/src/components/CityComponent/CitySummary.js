@@ -9,27 +9,30 @@ function CitySummary(props) {
     const createCityChecklist = props.createCityChecklist
 
     const detail = () => {
-        if (props.list.length === 0) {
-            return
-        } else {
+        if (props.list.length !== 0) {
             return (
-                'The northernmost city is ' + citySummary[0].name + ' at latitude ' + citySummary[0].lat + '\n' +
-                'The southernmost city is ' + citySummary[1].name + ' at latitude ' + citySummary[1].lat + '\n' +
-                'The total population is ' + citySummary[2] + '.'
-            )
+                `The northernmost city is   ${citySummary[0].name}  at latitude  ${citySummary[0].lat}  \n 
+                The southernmost city is  ${citySummary[1].name}  at latitude  ${citySummary[1].lat}  \n 
+                The total population is  ${citySummary[2]} .`
+            );
+        }else
+        {
+            return ( null )           
         };
     }
 
 
     if (props.list.length === 0) {
-        if (((cityStates[0] === 1)||(cityStates[0] === false))
-              && (!(createCityChecklist[0]))) {
-            return 'New city NOT created, enter valid city values';
-        } else {
-            return null
+        if (cityStates[0] === false){
+            return 'create a new city';
         }
+         else if ((cityStates[0] === 1)  && (!(createCityChecklist[0]))) {             
+            return 'New city NOT created, enter valid city values';
+        }else {return null;}
+        
+        
 
-    } else if (props.list.length !== 0) {
+    }else if (props.list.length !== 0) {
         if (cityStates[0] === false) {
             return <p>{detail()}</p>;
         }
